@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Blog } from '../blog/blog.entity'
+import { User } from 'src/user/user.entity';
 
 @Entity()
 @ObjectType()
@@ -11,13 +12,22 @@ export class Comment {
 
     @Column()
     @Field()
-    body: string;
+    userId: number;
 
     @Column()
     @Field()
-    author: string;
+    blogId: number;
+
+    @Column()
+    @Field()
+    body: string;
+
+    @ManyToOne(() => User, (user: User) => user.comments)
+    @JoinColumn({ name: "userId" })
+    public author: User[];
 
     @ManyToOne(() => Blog, (blog: Blog) => blog.comments)
+    @JoinColumn({ name: "blogId" })
     public blog: Blog[];
 
     @Column()

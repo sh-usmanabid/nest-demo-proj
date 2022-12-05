@@ -2,26 +2,27 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Comment {
-  id: Int!
-  body: String!
-  author: String!
-  date: String!
-}
-
-type Blog {
-  id: Int!
-  title: String!
-  body: String!
-  author: String!
-  date: String!
-}
-
 type User {
   id: Int!
   firstname: String!
   lastname: String!
   email: String!
+  date: String!
+}
+
+type Comment {
+  id: Int!
+  userId: Float!
+  blogId: Float!
+  body: String!
+  date: String!
+}
+
+type Blog {
+  id: Int!
+  userId: Float!
+  title: String!
+  body: String!
   date: String!
 }
 
@@ -39,16 +40,17 @@ type Mutation {
 
 input BlogInput {
   id: Float!
+  userId: Float!
   title: String!
   body: String!
-  author: String!
   date: String!
 }
 
 input CommentInput {
   id: Float!
+  userId: Float!
+  blogId: Float!
   body: String!
-  author: String!
   date: String!
 }
 

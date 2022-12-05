@@ -6,13 +6,13 @@ export class BlogInput {
     id: number;
 
     @Field()
+    userId: number;
+
+    @Field()
     title: string;
 
     @Field()
     body: string;
-
-    @Field()
-    author: string;
 
     @Field()
     date: string;

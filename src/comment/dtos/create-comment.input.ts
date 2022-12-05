@@ -6,10 +6,13 @@ export class CommentInput {
     id: number;
 
     @Field()
-    body: string;
+    userId: number;
 
     @Field()
-    author: string;
+    blogId: number;
+
+    @Field()
+    body: string;
 
     @Field()
     date: string;

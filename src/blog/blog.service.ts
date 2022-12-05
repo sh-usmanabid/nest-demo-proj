@@ -12,7 +12,7 @@ export class BlogService {
     ) {}
 
     async getAll(): Promise<Blog[]> {
-        return await this.blogRepository.find();
+        return await this.blogRepository.find({ relations: ['comments'] });
     }
 
     async createBlog(blogInput: BlogInput): Promise<Blog> {
