@@ -27,7 +27,7 @@ export class Blog {
 
     @ManyToOne(() => User, (user: User) => user.comments)
     @JoinColumn({ name: "userId" })
-    public author: User[];
+    public author: User;
 
     @Column()
     @Field()

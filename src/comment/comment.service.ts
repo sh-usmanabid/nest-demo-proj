@@ -12,7 +12,9 @@ export class CommentService {
     ) {}
 
     async getAll(): Promise<Comment[]> {
-        return await this.commentRepository.find();
+        const comments = await this.commentRepository.find({ relations: { author: true, blog: true }});
+        console.log(comments);
+        return comments;
     }
 
     async createComment(commentInput: CommentInput): Promise<Comment> {

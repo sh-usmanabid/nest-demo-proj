@@ -12,7 +12,9 @@ export class BlogService {
     ) {}
 
     async getAll(): Promise<Blog[]> {
-        return await this.blogRepository.find({ relations: ['comments'] });
+        const blogs = await this.blogRepository.find({ relations: { author: true, comments: true } });
+        console.log(blogs);
+        return blogs;
     }
 
     async createBlog(blogInput: BlogInput): Promise<Blog> {

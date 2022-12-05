@@ -24,11 +24,11 @@ export class Comment {
 
     @ManyToOne(() => User, (user: User) => user.comments)
     @JoinColumn({ name: "userId" })
-    public author: User[];
+    public author: User;
 
     @ManyToOne(() => Blog, (blog: Blog) => blog.comments)
     @JoinColumn({ name: "blogId" })
-    public blog: Blog[];
+    public blog: Blog;
 
     @Column()
     @Field()

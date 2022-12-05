@@ -12,7 +12,10 @@ export class UserService {
     ) {}
 
     async getAll(): Promise<User[]> {
-        return await this.userRepository.find({ relations: ['comments', 'blogs']});
+        let users = await this.userRepository.find({ relations: { blogs: true, comments: true } });
+        console.log(users);
+        return users;
+
     }
 
     async createUser(userInput: UserInput): Promise<User> {
